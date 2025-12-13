@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エモクロアTRPG キャラクターシート生成</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Zen+Antique&family=Kiwi+Maru:wght@400;500&family=Sawarabi+Mincho&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Emoklore Character Sheet Generator</h1>
+            <p>JSONを読み込んでスタイリッシュな画像を生成</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <section class="input-group">
+                    <h2>1. データ入力</h2>
+                    <label for="jsonInput">キャラクターJSONを貼り付け</label>
+                    <textarea id="jsonInput" placeholder='{"kind":"character","data":...}'></textarea>
+                </section>
+
+                <section class="input-group">
+                    <h2>2. カスタマイズ</h2>
+                    <label for="imageInput">キャラクター画像 (任意)</label>
+                    <input type="file" id="imageInput" accept="image/*">
+
+                    <label for="freeText">自由記入欄</label>
+                    <textarea id="freeText" placeholder="自由にテキストを入力してください..."></textarea>
+                </section>
+
+                <section class="input-group">
+                    <h2>3. デザイン</h2>
+                    <label>テーマ選択</label>
+                    <div class="theme-selector">
+                        <label><input type="radio" name="theme" value="standard" checked> スタンダード</label>
+                        <label><input type="radio" name="theme" value="dark"> ダーク</label>
+                        <label><input type="radio" name="theme" value="pastel"> パステル</label>
+                        <label><input type="radio" name="theme" value="noir"> ノワール</label>
+                    </div>
+                    <button id="generateBtn">生成する</button>
+                    <button id="downloadBtn" disabled>画像を保存</button>
+                </section>
+            </div>
+
+            <div class="preview-area">
+                <canvas id="sheetCanvas" width="1500" height="1000"></canvas>
+                <div id="loadingMessage" class="hidden">Generating...</div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
